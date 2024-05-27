@@ -38,11 +38,14 @@ GLfloat *Shapes::toVertexArray() {
         }
 
     }
+
     return r;
+
 }
 
 
 GLfloat *Shapes::toColorArray() {
+
     GLfloat * r = new GLfloat [getNumColors()];
     if (numShapes >0)
     {
@@ -68,6 +71,7 @@ GLfloat *Shapes::toColorArray() {
         }
 
     }
+
     return r;
 }
 int Shapes::getNumVertices() {
@@ -95,11 +99,9 @@ Triangle::Triangle(vec3 p1,vec3 p2, vec3 p3, vec3 color) {
     vertices = new vec3 * [n];
 
     //storing vertices in vertices array
-    vertices[0] = new vec3(p1);
-    vertices[1] = new vec3(p2);
-    vertices[2] = new vec3(p3);
-
-
+    vertices[0] = new vec3(p1.x,p1.y,p1.z);
+    vertices[1] = new vec3(p2.x,p2.y,p2.z);
+    vertices[2] = new vec3(p3.x,p3.y,p3.z);
     //storing triangle colors in color array
    /* double ** colorArr = new double * [n];
     for (int i = 0; i <n ; ++i) {
@@ -114,6 +116,7 @@ Triangle::Triangle(vec3 p1,vec3 p2, vec3 p3, vec3 color) {
     {
       colors[i] = color;
     }
+
 }
 int Triangle::getNumPoints() {
     return 3;
@@ -168,10 +171,10 @@ Rectangle::Rectangle(vec3 p11, vec3 p12, vec3 p13, vec3 p21, vec3 color) {
     }
 }*/
 
-floorPlan::floorPlan(){}() {
-  numShapes = 0;
+floorPlan::floorPlan() {
+  numShapes = 1;
   s = new Shapes * [numShapes];
-
+  s[0] = new Triangle(vec3(0,0,0),vec3(0.1,0.1,0),vec3(0,0.1,0), vec3(0,0,0));
 
 
 }

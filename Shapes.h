@@ -3,6 +3,7 @@
 #include "GL/glew.h"
 #include "GLFW/glfw3.h"
 #include <glm/glm.hpp>
+#include <iostream>
 
 #ifndef PRAC2_SHAPES_H
 #define PRAC2_SHAPES_H
@@ -12,7 +13,7 @@ using namespace std;
 
 struct Shapes {
     vec3** vertices; //stores vertices of shape
-    vec3 * colors; //stores color of shape
+    vec3* colors; //stores color of shape
     Shapes** s; // array of array of Shapes of triangle/rectangle... to build car
     int numShapes; // number of shapes in a shape - 2 in rectangle
 

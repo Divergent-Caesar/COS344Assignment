@@ -9,6 +9,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "Shapes.h"
+#include "shader.hpp"
 
 
 
@@ -61,38 +62,8 @@ inline GLFWwindow *setUp()
     startUpGLEW();
     return window;
 }
-const char *SimpleFragmentShader = R"(
-    #version 330 core
 
-    // Ouput data
-    out vec3 color;
-    in vec3 fragmentColor;
 
-    void main()
-    {
-
-	// Output color = red
-	color = fragmentColor;
-
-    }
-)";
-
-const char *SimpleVertexShader = R"(
-    #version 330 core
-
-    // Input vertex data, different for all executions of this shader.
-    layout(location = 0) in vec3 vertexPosition_modelspace;
-    layout(location = 1) in vec3 vertexColor;
-    out vec3 fragmentColor;
-
-    void main(){
-
-        gl_Position.xyz = vertexPosition_modelspace;
-        gl_Position.w = 1.0;
-        fragmentColor = vertexColor;
-
-    }
-)";
 
 int main() {
   GLFWwindow *window;
@@ -115,7 +86,14 @@ int main() {
 
   glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
-  GLuint ID = LoadShaders(SimpleVertexShader, SimpleFragmentShader);
+  GLuint ID = LoadShaders("vertexShader.glsl", "fragmentShader.glsl");
+  /*GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+  glShaderSource(vertexShader , 1, &SimpleVertexShader, NULL);
+  glCompileShader(vertexShader);
+
+  GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+  glShaderSource(fragmentShader , 1, &SimpleFragmentShader, NULL);
+  glCompileShader(fragmentShader);*/
 
 
   GLuint vertexBuffer;
@@ -123,10 +101,10 @@ int main() {
 
   GLuint ColorBuffer;
   glGenBuffers(1, &ColorBuffer);
-  Shapes* p = new Plane();
+
+  floorPlan* p = new floorPlan();
   double lastTime;
   lastTime = glfwGetTime();
-  bool pressed = false;
   do {
     float currentTime = glfwGetTime();
     float deltaTime = currentTime - lastTime;
@@ -151,8 +129,8 @@ int main() {
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (void *)0);
 
 
-    //glDrawArrays(GL_TRIANGLES,0, p->getNumVertices());
-    if (glfwGetKey(window,GLFW_KEY_ENTER) == GLFW_PRESS && !pressed) {
+    glDrawArrays(GL_TRIANGLES,0, p->getNumVertices());
+    /*if (glfwGetKey(window,GLFW_KEY_ENTER) == GLFW_PRESS && !pressed) {
       glDrawArrays(GL_LINES, 0, p->getNumVertices());
       pressed = true;
     } else if (glfwGetKey(window,GLFW_KEY_ENTER) == GLFW_PRESS && pressed)
@@ -167,114 +145,13 @@ int main() {
     {
       glDrawArrays(GL_LINES, 0, p->getNumVertices());
 
-    }
+    }*/
 
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
 
     glfwSwapBuffers(window);
     glfwPollEvents();
-
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-    {
-      //rotate around x axis in anti-clockwise directiom
-      mat4x4 trnsformation = IdentityMatrix(4);
-      trnsformation[1][1] = cos(-45*3.14/180);
-      trnsformation[1][2] = -sin(-45*3.14/180);
-      trnsformation[2][1] = sin(-45*3.14/180);
-      trnsformation[2][2] = cos(-45*3.14/180);
-
-      p->applyMat(trnsformation);
-    }
-    if (glfwGetKey(window,GLFW_KEY_S) == GLFW_PRESS)
-    {
-      IdentityMatrix trnsformation = IdentityMatrix(4);
-      trnsformation[1][1] = cos(45*3.14/180);
-      trnsformation[1][2] = -sin(45*3.14/180);
-      trnsformation[2][1] = sin(45*3.14/180);
-      trnsformation[2][2] = cos(45*3.14/180);
-
-      p->applyMat(trnsformation);
-    }
-    if(glfwGetKey(window,GLFW_KEY_A) == GLFW_PRESS)
-    {
-      IdentityMatrix trnsformation = IdentityMatrix(4);
-      trnsformation[0][0] = cos(-45*3.14/180);
-      trnsformation[0][2] = sin(-45*3.14/180);
-      trnsformation[2][0] = -sin(-45*3.14/180);
-      trnsformation[2][2] = cos(-45*3.14/180);
-      p->applyMat(trnsformation);
-    }
-    if(glfwGetKey(window,GLFW_KEY_D) == GLFW_PRESS)
-    {
-      IdentityMatrix trnsformation = IdentityMatrix(4);
-      trnsformation[0][0] = cos(45*3.14/180);
-      trnsformation[0][2] = sin(45*3.14/180);
-      trnsformation[2][0] = -sin(45*3.14/180);
-      trnsformation[2][2] = cos(45*3.14/180);
-      p->applyMat(trnsformation);
-    }
-    if(glfwGetKey(window,GLFW_KEY_E) == GLFW_PRESS)
-    {
-      IdentityMatrix trnsformation = IdentityMatrix(4);
-      trnsformation[0][0] = cos(-45*3.14/180);
-      trnsformation[0][1] = sin(-45*3.14/180);
-      trnsformation[1][0] = -sin(-45*3.14/180);
-      trnsformation[1][1] = cos(-45*3.14/180);
-      p->applyMat(trnsformation);
-    }
-    if(glfwGetKey(window,GLFW_KEY_Q) == GLFW_PRESS)
-    {
-      IdentityMatrix trnsformation = IdentityMatrix(4);
-      trnsformation[0][0] = cos(45*3.14/180);
-      trnsformation[0][1] = sin(45*3.14/180);
-      trnsformation[1][0] = -sin(45*3.14/180);
-      trnsformation[1][1] = cos(45*3.14/180);
-      p->applyMat(trnsformation);
-    }
-    if(glfwGetKey(window,GLFW_KEY_I) == GLFW_PRESS)
-    {
-      //increase y pos
-      IdentityMatrix trnsformation = IdentityMatrix(4);
-     trnsformation[1][3] = 0.1;
-      p->applyMat(trnsformation);
-    }
-    if(glfwGetKey(window,GLFW_KEY_K) == GLFW_PRESS)
-    {
-      //decrease y pos
-      IdentityMatrix trnsformation = IdentityMatrix(4);
-      trnsformation[1][3] = -0.1;
-      p->applyMat(trnsformation);
-    }
-    if(glfwGetKey(window,GLFW_KEY_L) == GLFW_PRESS)
-    {
-      //increase x pos
-      IdentityMatrix trnsformation = IdentityMatrix(4);
-      trnsformation[0][3] = 0.1;
-      p->applyMat(trnsformation);
-    }
-    if(glfwGetKey(window,GLFW_KEY_J) == GLFW_PRESS)
-    {
-      //decrease x pos
-      IdentityMatrix trnsformation = IdentityMatrix(4);
-      trnsformation[0][3] = -0.1;
-      p->applyMat(trnsformation);
-    }
-    if(glfwGetKey(window,GLFW_KEY_O) == GLFW_PRESS)
-    {
-      //increase y pos
-      IdentityMatrix trnsformation = IdentityMatrix(4);
-      trnsformation[2][3] = 0.1;
-      p->applyMat(trnsformation);
-    }
-    if(glfwGetKey(window,GLFW_KEY_U) == GLFW_PRESS)
-    {
-      //increase y pos
-      IdentityMatrix trnsformation = IdentityMatrix(4);
-      trnsformation[2][3] = -
-                            0.1;
-      p->applyMat(trnsformation);
-    }
     lastTime = currentTime;
     cout << "FPS: " << 1 / deltaTime << endl;
     delete[] v;
