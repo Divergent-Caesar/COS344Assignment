@@ -174,7 +174,7 @@ Rectangle::Rectangle(vec3 p11, vec3 p12, vec3 p13, vec3 p21, vec3 color) {
 floorPlan::floorPlan() {
   numShapes = 1;
   s = new Shapes * [numShapes];
-  s[0] = new Triangle(vec3(0,0,0),vec3(0.1,0.1,0),vec3(0,0.1,0), vec3(0,0,0));
+  s[0] = new Triangle(vec3(0,0,0),vec3(0.1,0.1,0),vec3(0,0.1,0), vec3(1.0f,1.0f,1.0f));
 
 
 }
