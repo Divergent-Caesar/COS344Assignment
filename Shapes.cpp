@@ -12,6 +12,48 @@ int Shapes::getNumPoints() {
     }
     return c;
 }
+
+int Shapes::numNormals()
+{
+    return getNumVertices();
+}
+
+/**
+ * Returns the normal for the shape
+*/
+GLfloat *Shapes::toNormalArray()
+{
+    GLfloat *result = new GLfloat[numNormals()];
+    if (numShapes > 0)
+    {
+        int count = 0;
+        for (int i = 0; i < numShapes; i++)
+        {
+            GLfloat *temp = s[i]->toNormalArray();
+            for (int j = 0; j < s[i]->numNormals(); j++)
+            {
+                result[count++] = temp[j];
+            }
+            delete[] temp;
+        }
+    }
+    else
+    {
+        int count = 0;
+        for (int i = 0; i < getNumPoints(); i+=3)
+        {
+            vec3 normal = normalize(cross((*vertices[i + 1]) - (*vertices[i]), (*vertices[i + 2]) - (*vertices[i])));
+            for (int j = 0; j < 3; j++)
+            {
+                result[count++] = normal[0];
+                result[count++] = normal[1];
+                result[count++] = normal[2];
+            }
+        }
+    }
+    return result;
+}
+
 GLfloat *Shapes::toVertexArray() {
 
     int n = getNumVertices();

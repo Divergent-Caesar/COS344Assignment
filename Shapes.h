@@ -19,9 +19,11 @@ struct Shapes {
 
     ~Shapes();
     virtual void applyMat(mat4x4 t);
-    virtual GLfloat* toVertexArray();
+    GLfloat *toNormalArray();
+    virtual GLfloat *toVertexArray();
     virtual GLfloat* toColorArray();
     virtual int getNumPoints();
+    int numNormals();
     virtual int getNumVertices();
     virtual int getNumColors();
 
