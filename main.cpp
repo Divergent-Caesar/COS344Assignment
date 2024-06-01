@@ -103,7 +103,20 @@ int main() {
   GLuint ColorBuffer;
   glGenBuffers(1, &ColorBuffer);
 
+  GLuint normalbuffer;
+  glGenBuffers(1, &normalbuffer);
+
   floorPlan* p = new floorPlan();
+
+  //lighting declarations
+  vec3 lightPosition = vec3(0.0f, 5.0f, -10.0f);
+  vec3 lightColor = vec3(1.0f, 1.0f, 1.1f);
+  vec3 ambientLight = vec3(0.8f, 0.8f, 0.8f);
+
+  GLuint lightPositionID = glGetUniformLocation(ID, "lightPosition_worldspace");
+  GLuint lightColorID = glGetUniformLocation(ID, "lightColor");
+  GLuint ambientLightID = glGetUniformLocation(ID, "ambientLight");
+
   double lastTime;
   lastTime = glfwGetTime();
   do {
@@ -114,12 +127,16 @@ int main() {
     glUseProgram(ID);
     GLfloat *v = p->toVertexArray();
     GLfloat *c = p->toColorArray();
+    GLfloat *n = p->toNormalArray();
 
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat[p->getNumVertices()]), v,GL_STATIC_DRAW);
 
     glBindBuffer(GL_ARRAY_BUFFER, ColorBuffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat[p->getNumColors()]), c,GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ARRAY_BUFFER, normalbuffer);
+    glBufferData(GL_ARRAY_BUFFER, p->numNormals() * sizeof(GLfloat), n, GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
@@ -128,7 +145,25 @@ int main() {
     glEnableVertexAttribArray(1);
     glBindBuffer(GL_ARRAY_BUFFER, ColorBuffer);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (void *)0);
+    
+    //here we will put the perspective matrix
+    mat4 ProjectionMatrix = perspective(radians(160.0f), 1.0f / 1.0f, 0.1f, 100.0f);
+    mat4 ViewMatrix = lookAt(vec3(0, 0, 20), vec3(0, 0, 0), vec3(0, 1, 0));
+    mat4 ModelMatrix = mat4(1.0);
+    mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
 
+    GLuint MatrixID = glGetUniformLocation(ID, "MVP");
+    GLuint ViewMatrixID = glGetUniformLocation(ID, "V");
+    GLuint ModelMatrixID = glGetUniformLocation(ID, "M");
+
+    glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
+    glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &ViewMatrix[0][0]);
+    glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &ModelMatrix[0][0]);
+        
+    // Pass the lighting parameters to the shaders
+    glUniform3fv(lightPositionID, 1, &lightPosition[0]);
+    glUniform3fv(lightColorID, 1, &lightColor[0]);
+    glUniform3fv(ambientLightID, 1, &ambientLight[0]);
 
     glDrawArrays(GL_TRIANGLES,0, p->getNumVertices());
     /*if (glfwGetKey(window,GLFW_KEY_ENTER) == GLFW_PRESS && !pressed) {
@@ -150,6 +185,7 @@ int main() {
 
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
+    glDisableVertexAttribArray(2);
 
     glfwSwapBuffers(window);
     glfwPollEvents();
