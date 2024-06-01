@@ -51,7 +51,7 @@ inline GLFWwindow *setUp()
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);           // To make MacOS happy; should not be needed
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // We don't want the old OpenGL
     GLFWwindow *window;                                            // (In the accompanying source code, this variable is global for simplicity)
-    window = glfwCreateWindow(1000, 1000, "u21434558", NULL, NULL);
+    window = glfwCreateWindow(1920, 1080, "u21434558", NULL, NULL);
 
    if (window == NULL)
     {
@@ -147,7 +147,7 @@ int main() {
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (void *)0);
     
     //here we will put the perspective matrix
-    mat4 ProjectionMatrix = perspective(radians(160.0f), 1.0f / 1.0f, 0.1f, 100.0f);
+    mat4 ProjectionMatrix = perspective(radians(160.0f), 1920.0f / 1080.0f, 0.1f, 100.0f);
     mat4 ViewMatrix = lookAt(vec3(0, 0, 20), vec3(0, 0, 0), vec3(0, 1, 0));
     mat4 ModelMatrix = mat4(1.0);
     mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
