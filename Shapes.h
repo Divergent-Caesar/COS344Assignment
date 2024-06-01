@@ -58,5 +58,7 @@ struct floorPlan : public Shapes {
     floorPlan();
 };
 
+mat4 perspective(float fov, float aspect, float near, float far);
+mat4 lookAt(vec3 eye, vec3 center, vec3 up);
 
 #endif//PRAC2_SHAPES_H
