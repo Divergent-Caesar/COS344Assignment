@@ -172,8 +172,26 @@ int main()
         glUniform3fv(lightColorID, 1, &lightColor[0]);
         glUniform3fv(ambientLightID, 1, &ambientLight[0]);
 
-        glDrawArrays(GL_TRIANGLES, 0, r->getNumVertices());
+        //glDrawArrays(GL_TRIANGLES, 0, r->getNumVertices());
 
+        bool pressed = false;
+        cout<<r->getNumPoints()<<endl;
+        if (glfwGetKey(window,GLFW_KEY_ENTER) == GLFW_PRESS && !pressed) {
+            glDrawArrays(GL_LINES, 0, r->getNumPoints());
+            pressed = true;
+        } else if (glfwGetKey(window,GLFW_KEY_ENTER) == GLFW_PRESS && pressed)
+        {
+        pressed = false;
+            glDrawArrays(GL_TRIANGLES,0, r->getNumPoints());
+
+        }else if (!pressed){
+            glDrawArrays(GL_TRIANGLES,0, r->getNumPoints());
+
+        }else
+        {
+            glDrawArrays(GL_LINES, 0, r->getNumPoints());
+
+        }
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
         glDisableVertexAttribArray(2);
