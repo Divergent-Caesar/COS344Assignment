@@ -225,7 +225,9 @@ floorPlan::floorPlan() {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //floor
     // s[0] = new rectPrism(vec3(-0.983,-0.8629,0.8629), vec3(0.983,-0.8629,0.8629), vec3(0.983,-0.794,0.8629), vec3(-0.983,-0.794,0.8629), vec3(0.5,0.5,0.5), 0.82);  // top layer, depth
-    s[0] = new rectPrism(vec3(-0.5,-0.5,0.5), vec3(0.5,0.5,0.5), vec3(0.5,-0.5,0.5), vec3(-0.5,0.5,0.5), vec3(0.5,0.5,0.5), 0.5);
+    // s[0] = new rectPrism(vec3(-0.5,-0.5,0.5), vec3(0.5,0.5,0.5), vec3(0.5,-0.5,0.5), vec3(-0.5,0.5,0.5), vec3(0.5,0.5,0.5), 0.5);
+    s[0] = new rectPrism(vec3(0,0,0), 0.2, 0.2, 0.2, vec3(0.5,0.5,0.5));
+
 
 //     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //     //walls x 4 (1r + 1r + (1r + 2t) + (1r + 2t) = shapes)
@@ -1213,17 +1215,49 @@ floorPlan::floorPlan() {
   }
 }*/
 
-rectPrism::rectPrism(vec3 p1, vec3 p2, vec3 p3, vec3 p4, vec3 c, double Z) {
-  numShapes = 6;
-  s = new Shapes * [numShapes];
-  s[0] = new Rectangle(p1,p2,p3,p4,c);//Base
-  s[1] = new Rectangle(p1,p2, vec3(p1.x,p1.y,p1.z+Z), vec3(p2.x,p2.y,p2.z+Z),c);//back face
-  s[2] = new Rectangle(p2,p3, vec3(p2.x,p2.y,p2.z+Z), vec3(p3.x,p3.y,p3.z+Z),c);//right face
-  s[3] = new Rectangle(p3,p4, vec3(p3.x,p3.y,p3.z+Z), vec3(p4.x,p4.y,p4.z+Z),c);//front face
-  s[4] = new Rectangle(p4,p1, vec3(p4.x,p4.y,p4.z+Z), vec3(p1.x,p1.y,p1.z+Z),c);//left face
-  s[5] = new Rectangle(vec3(p1.x,p1.y,p1.z-Z), vec3(p2.x,p2.y,p2.z-Z), vec3(p3.x,p3.y,p3.z-Z), vec3(p4.x,p4.y,p4.z-Z),c);
+// rectPrism::rectPrism(vec3 p1, vec3 p2, vec3 p3, vec3 p4, vec3 c, double Z) {
+//   numShapes = 6;
+//   s = new Shapes * [numShapes];
+//   s[0] = new Rectangle(p1,p2,p3,p4,c);//Base
+//   s[1] = new Rectangle(p1,p2, vec3(p1.x,p1.y,p1.z+Z), vec3(p2.x,p2.y,p2.z+Z),c);//back face
+//   s[2] = new Rectangle(p2,p3, vec3(p2.x,p2.y,p2.z+Z), vec3(p3.x,p3.y,p3.z+Z),c);//right face
+//   s[3] = new Rectangle(p3,p4, vec3(p3.x,p3.y,p3.z+Z), vec3(p4.x,p4.y,p4.z+Z),c);//front face
+//   s[4] = new Rectangle(p4,p1, vec3(p4.x,p4.y,p4.z+Z), vec3(p1.x,p1.y,p1.z+Z),c);//left face
+//   s[5] = new Rectangle(vec3(p1.x,p1.y,p1.z-Z), vec3(p2.x,p2.y,p2.z-Z), vec3(p3.x,p3.y,p3.z-Z), vec3(p4.x,p4.y,p4.z-Z),c);
+
+// }
+
+rectPrism::rectPrism(vec3 center, double height, double width, double length, vec3 color)
+{
+    numShapes = 6;
+    s = new Shapes*[numShapes];
+
+    vec3 topPlane = center + vec3(0, height / 2, 0);
+    vec3 bottomPlane = center - vec3(0, height / 2, 0);
+    vec3 leftPlane = center - vec3(width / 2, 0, 0);
+    vec3 rightPlane = center + vec3(width / 2, 0, 0);
+    vec3 nearPlane = center - vec3(0, 0, length / 2);
+    vec3 farPlane = center + vec3(0, 0, length / 2);
+
+    vec3 nearLeftTop = nearPlane + leftPlane + topPlane;
+    vec3 nearRightTop = nearPlane + rightPlane + topPlane;
+    vec3 nearLeftBottom = nearPlane + leftPlane + bottomPlane;
+    vec3 nearRightBottom = nearPlane + rightPlane + bottomPlane;
+
+    vec3 farLeftTop = farPlane + leftPlane + topPlane;
+    vec3 farRightTop = farPlane + rightPlane + topPlane;
+    vec3 farLeftBottom = farPlane + leftPlane + bottomPlane;
+    vec3 farRightBottom = farPlane + rightPlane + bottomPlane;
+
+    s[0] = new Rectangle(nearLeftTop, nearRightTop, nearLeftBottom, nearRightBottom, color);
+    s[1] = new Rectangle(farRightTop, farLeftTop, farRightBottom, farLeftBottom, color);
+    s[2] = new Rectangle(farLeftTop, nearLeftTop, farLeftBottom, nearLeftBottom, color);
+    s[3] = new Rectangle(nearRightTop, farRightTop, nearRightBottom, farRightBottom, color);
+    s[4] = new Rectangle(nearLeftBottom, nearRightBottom, farLeftBottom, farRightBottom, color);
+    s[5] = new Rectangle(nearLeftTop, nearRightTop, farLeftTop, farRightTop, color);
 
 }
+
 
 triPrism::triPrism(vec3 p1, vec3 p2, vec3 p3, vec3 c,double Z) {
   numShapes = 5;
