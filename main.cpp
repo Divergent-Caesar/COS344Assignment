@@ -98,9 +98,9 @@ int main()
     glGenBuffers(1, &normalbuffer);
 
     // rectPrism *r = new rectPrism(vec3(0.0,0.0,0.0),vec3(0.1,0.0,0.0),vec3(0.1,0.1,0.0),vec3(0.0,0.1,0.0),vec3(0.1,0.0,0.0),0.1);
-    rectPrism *r = new rectPrism(vec3(0,0,0), 0.2, 0.2, 0.2, vec3(0.5,0.5,0.5));
+    //rectPrism *r = new rectPrism(vec3(0,0,0), 0.2, 0.2, 0.2, vec3(0.5,0.5,0.5));
 
-    //floorPlan *p = new floorPlan();
+    floorPlan *p = new floorPlan();
     float lightIntensity = 8.0f;
     vec3 lightPosition = vec3(1.0f, 1.0f, 1.0f);
     vec3 lightColor = vec3(1.0f, 1.0f, 1.0f);
@@ -123,18 +123,18 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glUseProgram(ID);
 
-        GLfloat *v = r->toVertexArray();
-        GLfloat *c = r->toColorArray();
-        GLfloat *n = r->toNormalArray();
+        GLfloat *v = p->toVertexArray();
+        GLfloat *c = p->toColorArray();
+        GLfloat *n = p->toNormalArray();
 
         glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-        glBufferData(GL_ARRAY_BUFFER, r->getNumVertices() * 3 * sizeof(GLfloat), v, GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, p->getNumVertices() * 3 * sizeof(GLfloat), v, GL_STATIC_DRAW);
 
         glBindBuffer(GL_ARRAY_BUFFER, ColorBuffer);
-        glBufferData(GL_ARRAY_BUFFER, r->getNumColors() * sizeof(GLfloat), c, GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, p->getNumColors() * sizeof(GLfloat), c, GL_STATIC_DRAW);
 
         glBindBuffer(GL_ARRAY_BUFFER, normalbuffer);
-        glBufferData(GL_ARRAY_BUFFER, r->numNormals() * sizeof(GLfloat), n, GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, p->numNormals() * sizeof(GLfloat), n, GL_STATIC_DRAW);
 
         glEnableVertexAttribArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
@@ -175,21 +175,21 @@ int main()
         //glDrawArrays(GL_TRIANGLES, 0, r->getNumVertices());
 
         bool pressed = false;
-        cout<<r->getNumPoints()<<endl;
+        cout<<p->getNumPoints()<<endl;
         if (glfwGetKey(window,GLFW_KEY_ENTER) == GLFW_PRESS && !pressed) {
-            glDrawArrays(GL_LINES, 0, r->getNumPoints());
+            glDrawArrays(GL_LINES, 0, p->getNumPoints());
             pressed = true;
         } else if (glfwGetKey(window,GLFW_KEY_ENTER) == GLFW_PRESS && pressed)
         {
         pressed = false;
-            glDrawArrays(GL_TRIANGLES,0, r->getNumPoints());
+            glDrawArrays(GL_TRIANGLES,0, p->getNumPoints());
 
         }else if (!pressed){
-            glDrawArrays(GL_TRIANGLES,0, r->getNumPoints());
+            glDrawArrays(GL_TRIANGLES,0, p->getNumPoints());
 
         }else
         {
-            glDrawArrays(GL_LINES, 0, r->getNumPoints());
+            glDrawArrays(GL_LINES, 0, p->getNumPoints());
 
         }
         glDisableVertexAttribArray(0);
@@ -207,5 +207,5 @@ int main()
     } while (glfwGetKey(window, GLFW_KEY_SPACE) != GLFW_PRESS &&
              glfwWindowShouldClose(window) == 0);
 
-    delete r;
+    delete p;
 }
