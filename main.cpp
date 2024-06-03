@@ -97,7 +97,9 @@ int main()
     GLuint normalbuffer;
     glGenBuffers(1, &normalbuffer);
 
-    rectPrism *r = new rectPrism(vec3(0.0,0.0,0.0),vec3(0.1,0.0,0.0),vec3(0.1,0.1,0.0),vec3(0.0,0.1,0.0),vec3(0.1,0.0,0.0),0.1);
+    // rectPrism *r = new rectPrism(vec3(0.0,0.0,0.0),vec3(0.1,0.0,0.0),vec3(0.1,0.1,0.0),vec3(0.0,0.1,0.0),vec3(0.1,0.0,0.0),0.1);
+    rectPrism *r = new rectPrism(vec3(0,0,0), 0.2, 0.2, 0.2, vec3(0.5,0.5,0.5));
+
     //floorPlan *p = new floorPlan();
     float lightIntensity = 8.0f;
     vec3 lightPosition = vec3(1.0f, 1.0f, 1.0f);

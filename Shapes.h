@@ -48,7 +48,9 @@ struct triPrism:public Shapes{
   triPrism(vec3 p1,vec3 p2, vec3 p3,vec3 c,double Z);
 };
 struct rectPrism:public Shapes{
-  rectPrism(vec3 p1, vec3 p2 ,vec3 p3,vec3 p4, vec3 c,double Z);
+  // rectPrism(vec3 p1, vec3 p2 ,vec3 p3,vec3 p4, vec3 c,double Z);
+  rectPrism(vec3 center, double height, double width, double length, vec3 color);
+
 };
 
 /*struct cone:public Shapes{
