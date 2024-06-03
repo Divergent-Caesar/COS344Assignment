@@ -220,931 +220,973 @@ floorPlan::floorPlan() {
 
     numShapes = 1 ;
     s = new Shapes * [numShapes];
-    s[0] = new Triangle(vec3(0,0.4,0),vec3(-0.2,0.2,0),vec3(0.2,0.2,0), vec3(0,0,0));
+    // s[0] = new Triangle(vec3(0,0.4,0),vec3(-0.2,0.2,0),vec3(0.2,0.2,0), vec3(0,0,0));
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //floor
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);  //what is the double
+    // s[0] = new rectPrism(vec3(-0.983,-0.8629,0.8629), vec3(0.983,-0.8629,0.8629), vec3(0.983,-0.794,0.8629), vec3(-0.983,-0.794,0.8629), vec3(0.5,0.5,0.5), 0.82);  // top layer, depth
+    s[0] = new rectPrism(vec3(-0.5,-0.5,0.5), vec3(0.5,0.5,0.5), vec3(0.5,-0.5,0.5), vec3(-0.5,0.5,0.5), vec3(0.5,0.5,0.5), 0.5);
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //walls x 4 (1r + 1r + (1r + 2t) + (1r + 2t) = shapes)
-    // s[1] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0); //east wall with elevator shaft
-    // s[2] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0); //west wall
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //walls x 4 (1r + 1r + (1r + 2t) + (1r + 2t) = shapes)
+//     s[1] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0); //east wall with elevator shaft
+//     s[2] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0); //west wall
 
-    // s[3] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0); //north wall 
-    // s[4] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[5] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[3] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0); //north wall 
+//     s[4] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[5] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // s[6] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0); //south wall with cutouts
-    // s[7] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[8] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[6] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0); //south wall with cutouts
+//     s[7] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[8] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //elevator shaft (1 shape)
-    // s[9] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //elevator shaft (1 shape)
+//     s[9] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //1. chair 1 x 7 (5 shapes each)
-    // //1
-    // s[10] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[11] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[12] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[13] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[14] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //1. chair 1 x 7 (5 shapes each)
+//     //1
+//     s[10] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[11] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[12] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[13] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[14] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //2
-    // s[15] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[16] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[17] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[18] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[19] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //2
+//     s[15] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[16] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[17] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[18] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[19] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //3
-    // s[20] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[21] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[22] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[23] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[24] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //3
+//     s[20] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[21] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[22] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[23] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[24] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //4
-    // s[25] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[26] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[27] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[28] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[29] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //4
+//     s[25] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[26] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[27] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[28] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[29] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //5
-    // s[30] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[31] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[32] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[33] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[34] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //5
+//     s[30] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[31] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[32] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[33] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[34] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //6
-    // s[35] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[36] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[37] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[38] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[39] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //6
+//     s[35] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[36] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[37] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[38] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[39] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //7
-    // s[40] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[41] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[42] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[43] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[44] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //7
+//     s[40] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[41] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[42] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[43] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[44] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //2. cutouts x 6 (11 shapes each)
-    // //1
-    // s[45] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[46] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[47] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[48] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[49] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[50] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[51] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[52] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[53] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[54] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[55] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //2. cutouts x 6 (11 shapes each)
+//     //1
+//     s[45] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[46] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[47] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[48] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[49] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[50] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[51] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[52] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[53] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[54] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[55] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //2
-    // s[56] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[57] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[58] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[59] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[60] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[61] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[62] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[63] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[64] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[65] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[66] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //2
+//     s[56] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[57] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[58] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[59] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[60] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[61] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[62] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[63] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[64] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[65] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[66] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //3
-    // s[67] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[68] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[69] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[70] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[71] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[72] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[73] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[74] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[75] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[76] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[77] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //3
+//     s[67] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[68] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[69] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[70] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[71] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[72] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[73] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[74] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[75] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[76] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[77] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //4
-    // s[78] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[79] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[80] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[81] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[82] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[83] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[84] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[85] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[86] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[87] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[88] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //4
+//     s[78] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[79] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[80] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[81] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[82] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[83] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[84] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[85] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[86] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[87] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[88] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //5 
-    // s[89] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[90] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[91] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[92] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[93] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[94] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[95] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[96] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[97] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[98] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[99] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //5 
+//     s[89] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[90] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[91] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[92] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[93] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[94] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[95] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[96] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[97] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[98] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[99] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //6
-    // s[100] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[101] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[102] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[103] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[104] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[105] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[106] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[107] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[108] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[109] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[110] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //6
+//     s[100] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[101] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[102] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[103] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[104] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[105] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[106] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[107] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[108] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[109] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[110] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //3. planter box x 11 (5 shapes each)
-    // //1
-    // s[111] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[112] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[113] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[114] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[115] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //3. planter box x 11 (5 shapes each)
+//     //1
+//     s[111] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[112] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[113] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[114] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[115] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //2
-    // s[116] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[117] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[118] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[119] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[120] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //2
+//     s[116] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[117] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[118] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[119] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[120] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //3
-    // s[121] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[122] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[123] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[124] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[125] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //3
+//     s[121] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[122] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[123] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[124] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[125] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //4
-    // s[126] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[127] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[128] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[129] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[130] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //4
+//     s[126] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[127] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[128] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[129] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[130] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //5
-    // s[131] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[132] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[133] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[134] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[135] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //5
+//     s[131] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[132] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[133] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[134] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[135] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //6
-    // s[136] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[137] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[138] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[139] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[140] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //6
+//     s[136] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[137] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[138] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[139] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[140] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //7
-    // s[141] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[142] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[143] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[144] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[145] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //7
+//     s[141] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[142] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[143] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[144] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[145] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //8
-    // s[146] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[147] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[148] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[149] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[150] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //8
+//     s[146] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[147] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[148] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[149] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[150] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //9
-    // s[151] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[152] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[153] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[154] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[155] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //9
+//     s[151] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[152] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[153] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[154] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[155] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //10
-    // s[156] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[157] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[158] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[159] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[160] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //10
+//     s[156] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[157] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[158] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[159] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[160] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //11
-    // s[161] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[162] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[163] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[164] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[165] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //11
+//     s[161] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[162] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[163] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[164] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[165] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //4. booth chair x 8 (7 shapes each)
-    // //1
-    // s[166] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[167] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[168] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[169] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[170] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[171] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[172] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //4. booth chair x 8 (7 shapes each)
+//     //1
+//     s[166] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[167] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[168] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[169] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[170] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[171] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[172] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //2
-    // s[173] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[174] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[175] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[176] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[177] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[178] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[179] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //2
+//     s[173] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[174] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[175] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[176] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[177] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[178] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[179] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //3
-    // s[180] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[181] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[182] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[183] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[184] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[185] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[186] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //3
+//     s[180] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[181] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[182] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[183] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[184] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[185] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[186] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //4
-    // s[187] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[188] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[189] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[190] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[191] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[192] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[193] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //4
+//     s[187] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[188] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[189] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[190] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[191] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[192] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[193] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //5
-    // s[194] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[195] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[196] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[197] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[198] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[199] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[200] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //5
+//     s[194] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[195] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[196] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[197] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[198] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[199] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[200] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //6
-    // s[201] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[202] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[203] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[204] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[205] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[206] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[207] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //6
+//     s[201] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[202] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[203] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[204] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[205] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[206] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[207] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //7
-    // s[208] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[209] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[210] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[211] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[212] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[213] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[214] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //7
+//     s[208] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[209] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[210] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[211] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[212] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[213] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[214] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //8
-    // s[215] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[216] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[217] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[218] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[219] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[220] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[221] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //8
+//     s[215] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[216] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[217] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[218] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[219] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[220] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[221] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //5. round poof chair x 14 (1 shape each)
-    // //cylinders
-    // // s[222] = new 
-    // // s[223] = new 
-    // // s[224] = new 
-    // // s[225] = new 
-    // // s[226] = new 
-    // // s[227] = new 
-    // // s[228] = new 
-    // // s[229] = new 
-    // // s[230] = new 
-    // // s[231] = new 
-    // // s[232] = new 
-    // // s[233] = new 
-    // // s[234] = new 
-    // // s[235] = new 
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //5. round poof chair x 14 (1 shape each)
+//     //cylinders
+//     // s[222] = new 
+//     // s[223] = new 
+//     // s[224] = new 
+//     // s[225] = new 
+//     // s[226] = new 
+//     // s[227] = new 
+//     // s[228] = new 
+//     // s[229] = new 
+//     // s[230] = new 
+//     // s[231] = new 
+//     // s[232] = new 
+//     // s[233] = new 
+//     // s[234] = new 
+//     // s[235] = new 
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //6. square poof chair x 4 (1 shape each)
-    // s[236] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[237] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[238] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[239] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //6. square poof chair x 4 (1 shape each)
+//     s[236] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[237] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[238] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[239] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //7. table x 6 (7 shapes each)
-    // //1
-    // s[240] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[241] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[242] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[243] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[244] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[245] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[246] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //7. table x 6 (7 shapes each)
+//     //1
+//     s[240] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[241] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[242] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[243] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[244] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[245] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[246] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //2
-    // s[247] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[248] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[249] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[250] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[251] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[252] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[253] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //2
+//     s[247] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[248] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[249] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[250] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[251] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[252] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[253] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
     
-    // //3
-    // s[254] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[255] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[256] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[257] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[258] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[259] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[260] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //3
+//     s[254] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[255] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[256] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[257] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[258] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[259] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[260] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
     
-    // //4
-    // s[261] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[262] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[263] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[264] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[265] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[266] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[267] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //4
+//     s[261] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[262] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[263] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[264] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[265] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[266] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[267] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
     
-    // //5
-    // s[268] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[269] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[270] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[271] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[272] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[273] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[274] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //5
+//     s[268] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[269] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[270] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[271] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[272] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[273] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[274] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
     
-    // //6
-    // s[275] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[276] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[277] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[278] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[279] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[280] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[281] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //6
+//     s[275] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[276] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[277] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[278] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[279] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[280] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[281] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //small wall x 6 (1 shape each)
-    // s[282] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[283] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[284] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[285] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[286] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[287] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //small wall x 6 (1 shape each)
+//     s[282] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[283] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[284] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[285] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[286] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[287] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //9. table x 3 (3 shapes each)
-    // //3 x 3 cylinders
-    // // s[288] = new 
-    // // s[289] = new 
-    // // s[290] = new 
-    // // s[291] = new 
-    // // s[292] = new 
-    // // s[293] = new 
-    // // s[294] = new 
-    // // s[295] = new 
-    // // s[296] = new 
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //9. table x 3 (3 shapes each)
+//     //3 x 3 cylinders
+//     // s[288] = new 
+//     // s[289] = new 
+//     // s[290] = new 
+//     // s[291] = new 
+//     // s[292] = new 
+//     // s[293] = new 
+//     // s[294] = new 
+//     // s[295] = new 
+//     // s[296] = new 
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //10. chair x 6 (14 shapes each)
-    // //1
-    // s[297] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[298] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[299] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[300] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[301] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[302] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[303] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[304] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // // + 6 cylinders
-    // // s[305] = new 
-    // // s[306] = new 
-    // // s[307] = new 
-    // // s[308] = new 
-    // // s[309] = new 
-    // // s[310] = new 
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //10. chair x 6 (14 shapes each)
+//     //1
+//     s[297] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[298] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[299] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[300] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[301] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[302] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[303] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[304] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     // + 6 cylinders
+//     // s[305] = new 
+//     // s[306] = new 
+//     // s[307] = new 
+//     // s[308] = new 
+//     // s[309] = new 
+//     // s[310] = new 
 
-    // //2
-    // s[311] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[312] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[313] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[314] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[315] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[316] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[317] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[318] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // // + 6 cylinders
-    // // s[319] = new 
-    // // s[320] = new 
-    // // s[321] = new 
-    // // s[322] = new 
-    // // s[323] = new 
-    // // s[324] = new 
+//     //2
+//     s[311] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[312] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[313] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[314] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[315] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[316] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[317] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[318] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     // + 6 cylinders
+//     // s[319] = new 
+//     // s[320] = new 
+//     // s[321] = new 
+//     // s[322] = new 
+//     // s[323] = new 
+//     // s[324] = new 
 
-    // //3
-    // s[325] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[326] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[327] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[328] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[329] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[330] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[331] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[332] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // // + 6 cylinders
-    // // s[333] = new 
-    // // s[334] = new 
-    // // s[335] = new 
-    // // s[336] = new 
-    // // s[337] = new 
-    // // s[338] = new 
+//     //3
+//     s[325] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[326] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[327] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[328] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[329] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[330] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[331] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[332] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     // + 6 cylinders
+//     // s[333] = new 
+//     // s[334] = new 
+//     // s[335] = new 
+//     // s[336] = new 
+//     // s[337] = new 
+//     // s[338] = new 
 
-    // //4
-    // s[339] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[340] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[341] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[342] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[343] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[344] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[345] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[346] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // // + 6 cylinders
-    // // s[347] = new 
-    // // s[348] = new 
-    // // s[349] = new 
-    // // s[350] = new 
-    // // s[351] = new 
-    // // s[352] = new 
+//     //4
+//     s[339] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[340] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[341] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[342] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[343] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[344] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[345] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[346] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     // + 6 cylinders
+//     // s[347] = new 
+//     // s[348] = new 
+//     // s[349] = new 
+//     // s[350] = new 
+//     // s[351] = new 
+//     // s[352] = new 
 
-    // //5
-    // s[353] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[354] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[355] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[356] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[357] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[358] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[359] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[360] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // // + 6 cylinders
-    // // s[361] = new 
-    // // s[362] = new 
-    // // s[363] = new 
-    // // s[364] = new 
-    // // s[365] = new 
-    // // s[366] = new 
+//     //5
+//     s[353] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[354] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[355] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[356] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[357] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[358] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[359] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[360] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     // + 6 cylinders
+//     // s[361] = new 
+//     // s[362] = new 
+//     // s[363] = new 
+//     // s[364] = new 
+//     // s[365] = new 
+//     // s[366] = new 
 
-    // //6
-    // s[367] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[368] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[369] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[370] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[371] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[372] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[373] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[374] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // // + 6 cylinders
-    // // s[375] = new 
-    // // s[376] = new 
-    // // s[377] = new 
-    // // s[378] = new 
-    // // s[379] = new 
-    // // s[380] = new 
+//     //6
+//     s[367] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[368] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[369] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[370] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[371] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[372] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[373] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[374] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     // + 6 cylinders
+//     // s[375] = new 
+//     // s[376] = new 
+//     // s[377] = new 
+//     // s[378] = new 
+//     // s[379] = new 
+//     // s[380] = new 
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //11. chair x 6 (11 shapes each)
-    // //1
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //11. chair x 6 (11 shapes each)
+//     //1
+//     s[381] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[382] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[383] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[384] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[385] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[386] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[387] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[388] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[389] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[390] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[391] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //2
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //2
+//     s[392] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[393] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[394] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[395] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[396] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[397] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[398] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[399] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[400] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[401] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[402] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //3
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //3
+//     s[403] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[404] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[405] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[406] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[407] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[408] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[409] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[410] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[411] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[412] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[413] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //4
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //4
+//     s[414] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[415] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[416] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[417] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[418] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[419] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[420] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[421] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[422] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[423] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[424] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //5
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //5
+//     s[425] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[426] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[427] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[428] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[429] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[430] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[431] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[432] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[433] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[434] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[435] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //6
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //6
+//     s[436] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[437] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[438] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[439] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[440] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[441] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[442] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[443] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[444] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[445] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[446] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //12. table x 6 (4 shapes each)
-    // //1
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // // + 1 cylinder
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //12. table x 6 (4 shapes each)
+//     //1
+//     s[447] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[448] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[449] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     // + 1 cylinder
+//     // s[450] = new
 
-    // //2
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // // + 1 cylinder
+//     //2
+//     s[451] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[452] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[453] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     // + 1 cylinder
+//     // s[454] = new
 
-    // //3
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // // + 1 cylinder//1
+//     //3
+//     s[455] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[456] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[457] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     // + 1 cylinder
+//     // s[458] = new
     
-    // //4
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // // + 1 cylinder
+//     //4
+//     s[459] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[460] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[461] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     // + 1 cylinder
+//     // s[462] = new
 
-    // //5
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // // + 1 cylinder
+//     //5
+//     s[463] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[464] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[465] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     // + 1 cylinder
+//     // s[466] = new
 
-    // //6
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // // + 1 cylinder
+//     //6
+//     s[467] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[468] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[469] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     // + 1 cylinder
+//     // s[470] = new
 
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //13. chair x 6 (7 shapes each)
-    // //1
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //13. chair x 6 (7 shapes each)
+//     //1
+//     s[471] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[472] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[473] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[474] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[475] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[476] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[477] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //2
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //2
+//     s[478] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[479] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[480] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[481] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[482] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[483] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[484] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //3
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //3
+//     s[485] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[486] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[487] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[488] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[489] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[490] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[491] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //4
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //4
+//     s[492] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[493] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[494] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[495] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[496] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[497] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[498] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //5
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //5
+//     s[499] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[500] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[501] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[502] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[503] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[504] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[505] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //6
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //6
+//     s[506] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[507] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[508] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[509] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[510] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[511] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[512] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //14. glass wall/door x 9 (5 shapes each)
-    // //1
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //14. glass wall/door x 9 (5 shapes each)
+//     //1
+//     s[513] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[514] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[515] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[516] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[517] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //2
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //2
+//     s[518] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[519] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[520] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[521] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[522] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //3
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //3
+//     s[523] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[524] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[525] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[526] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[527] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //4
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //4
+//     s[528] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[529] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[530] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[531] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[532] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //5
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //5
+//     s[533] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[534] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[535] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[536] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[537] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //6
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //6
+//     s[538] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[539] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[540] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[541] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[542] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //7
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //7
+//     s[543] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[544] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[545] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[546] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[547] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //8
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //8
+//     s[548] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[549] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[550] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[551] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[552] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //9
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //9
+//     s[553] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[554] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[555] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[556] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[557] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //15. table x 2 (5 shapes each)
-    // //1
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //15. table x 2 (5 shapes each)
+//     //1
+//     s[558] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[559] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[560] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[561] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[562] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //2
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //2
+//     s[563] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[564] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[565] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[566] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[567] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
     
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //16. table x 3 (5 shapes each)
-    // //1
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // // + 1 cylinder
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //16. table x 3 (5 shapes each)
+//     //1
+//     s[568] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[569] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[570] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[571] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     // + 1 cylinder
+//     // s[572] = new
 
-    // //2
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // // + 1 cylinder
+//     //2
+//     s[573] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[574] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[575] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[576] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     // + 1 cylinder
+//     // s[577] = new
 
-    // //3
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // // + 1 cylinder
+//     //3
+//     s[578] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[579] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[580] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[581] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     // + 1 cylinder
+//     // s[582] = new
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //17. chair x 5 (8 shapes each)
-    // //1
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //17. chair x 5 (8 shapes each)
+//     //1
+//     s[583] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[584] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[585] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[586] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[587] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[588] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[589] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[590] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //2
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //2
+//     s[591] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[592] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[593] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[594] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[595] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[596] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[597] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[598] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //3
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //3
+//     s[599] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[600] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[601] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[602] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[603] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[604] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[605] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[606] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //4
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //4
+//     s[607] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[608] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[609] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[610] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[611] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[612] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[613] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[614] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //5
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //5
+//     s[615] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[616] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[617] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[618] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[619] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[620] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[621] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[622] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //18. counter x 6 (3 shapes each)
-    // //1
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //18. counter x 6 (3 shapes each)
+//     //1
+//     s[623] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[624] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[625] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //2
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //2
+//     s[626] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[627] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[628] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //3
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //3
+//     s[629] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[630] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[631] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //4
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //4
+//     s[632] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[633] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[634] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //5
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //5
+//     s[635] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[636] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[637] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // //6
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     //6
+//     s[638] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[639] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[640] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // //19. stairs x 1 (40 steps/up-steps + 6 up poles + 25 horizontal poles = shapes)
+//     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//     //19. stairs x 1 (40 steps/up-steps + 6 up poles + 25 horizontal poles = shapes)
 
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);  //10
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);  //20
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);  //30
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
-    // s[0] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);  //40
+//     s[641] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[642] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[643] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[644] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[645] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[646] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[647] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[648] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[649] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[650] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);  //10
+//     s[651] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[652] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[653] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[654] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[655] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[656] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[657] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[658] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[659] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[660] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);  //20
+//     s[661] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[662] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[663] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[664] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[665] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[666] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[667] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[668] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[669] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[670] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);  //30
+//     s[671] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[672] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[673] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[674] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[675] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[676] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[677] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[678] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[679] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
+//     s[680] = new rectPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);  //40
 
-    // + 6 cylinders
+//     // + 6 cylinders
+//     // s[681] = new
+//     // s[682] = new
+//     // s[683] = new
+//     // s[684] = new
+//     // s[685] = new
+//     // s[686] = new 
 
-    // + 25 cylinders
+
+//     // + 25 cylinders
+//     // s[687] = new
+//     // s[688] = new
+//     // s[689] = new
+//     // s[690] = new
+//     // s[691] = new 
+//     // s[692] = new
+//     // s[693] = new
+//     // s[694] = new
+//     // s[695] = new
+//     // s[696] = new 
+//     // s[697] = new
+//     // s[698] = new
+//     // s[699] = new
+//     // s[700] = new
+//     // s[701] = new 
+//     // s[702] = new
+//     // s[703] = new
+//     // s[704] = new
+//     // s[705] = new
+//     // s[706] = new 
+//     // s[707] = new
+//     // s[708] = new
+//     // s[709] = new
+//     // s[710] = new
+//     // s[711] = new 
 
 
 }
