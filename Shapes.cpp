@@ -1216,11 +1216,11 @@ floorPlan::floorPlan() {
 rectPrism::rectPrism(vec3 p1, vec3 p2, vec3 p3, vec3 p4, vec3 c, double Z) {
   numShapes = 6;
   s = new Shapes * [numShapes];
-  s[0] = new Rectangle(p1,p2,p3,p4,c);
-  s[1] = new Rectangle(p1,p2, vec3(p1.x,p1.y,p1.z-Z), vec3(p2.x,p2.y,p2.z-Z),c);
-  s[2] = new Rectangle(p2, vec3(p2.x,p2.y,p2.z-Z),p4, vec3 (p4.x,p4.y,p4.z-Z),c);
-  s[3] = new Rectangle(p4, vec3(p4.x,p4.y,p4.z-Z),p3, vec3 (p3.x,p3.y,p3.z-Z),c);
-  s[4] = new Rectangle(p3, vec3(p3.x,p3.y,p3.z-Z),p1, vec3(p1.x,p1.y,p1.z-Z),c);
+  s[0] = new Rectangle(p1,p2,p3,p4,c);//Base
+  s[1] = new Rectangle(p1,p2, vec3(p1.x,p1.y,p1.z+Z), vec3(p2.x,p2.y,p2.z+Z),c);//back face
+  s[2] = new Rectangle(p2,p3, vec3(p2.x,p2.y,p2.z+Z), vec3(p3.x,p3.y,p3.z+Z),c);//right face
+  s[3] = new Rectangle(p3,p4, vec3(p3.x,p3.y,p3.z+Z), vec3(p4.x,p4.y,p4.z+Z),c);//front face
+  s[4] = new Rectangle(p4,p1, vec3(p4.x,p4.y,p4.z+Z), vec3(p1.x,p1.y,p1.z+Z),c);//left face
   s[5] = new Rectangle(vec3(p1.x,p1.y,p1.z-Z), vec3(p2.x,p2.y,p2.z-Z), vec3(p3.x,p3.y,p3.z-Z), vec3(p4.x,p4.y,p4.z-Z),c);
 
 }

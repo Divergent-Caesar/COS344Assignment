@@ -1,33 +1,33 @@
 #version 330 core
 
 in vec3 fragmentColor;
-in vec3 fragmentNormal;
-in vec3 fragmentPosition;
+in vec3 Normal_cameraspace;
+in vec3 Position_cameraspace;
+in vec3 EyeDirection_cameraspace;
+in vec3 LightDirection_cameraspace;
 
 out vec3 color;
 
-uniform vec3 lightPosition_worldspace;
 uniform vec3 lightColor;
 uniform vec3 ambientLight;
 
 void main() {
-    // Light properties
-    vec3 lightDirection = normalize(lightPosition_worldspace - fragmentPosition);
-    vec3 normal = normalize(fragmentNormal);
+    vec3 MaterialDiffuseColor = fragmentColor;
+    vec3 MaterialAmbientColor = ambientLight * MaterialDiffuseColor;
+    vec3 MaterialSpecularColor = vec3(0.3, 0.3, 0.3);
 
-    // Diffuse component
-    float diff = max(dot(normal, lightDirection), 0.0);
-    vec3 diffuse = diff * lightColor;
+    float distance = length(LightDirection_cameraspace);
+    vec3 n = normalize(Normal_cameraspace);
+    vec3 l = normalize(LightDirection_cameraspace);
 
-    // Specular component
-    vec3 viewDirection = normalize(-fragmentPosition); // Assuming the camera is at (0,0,0)
-    vec3 reflectDirection = reflect(-lightDirection, normal);
-    float spec = pow(max(dot(viewDirection, reflectDirection), 0.0), 32);
-    vec3 specular = spec * lightColor;
+    float cosTheta = clamp(dot(n, l), 0, 1);
+    
+    vec3 E = normalize(EyeDirection_cameraspace);
+    vec3 R = reflect(-l, n);
+    float cosAlpha = clamp(dot(E, R), 0, 1);
 
-    // Ambient component
-    vec3 ambient = ambientLight;
-
-    // Combine components
-    color = (ambient + diffuse + specular) * fragmentColor;
+    color = 
+        MaterialAmbientColor +
+        lightColor * MaterialDiffuseColor * cosTheta +
+        lightColor * MaterialSpecularColor * pow(cosAlpha, 5);
 }
