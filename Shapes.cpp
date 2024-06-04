@@ -1274,11 +1274,42 @@ triPrism::triPrism(vec3 p1, vec3 p2, vec3 p3, vec3 c,double Z) {
   numShapes = 5;
   s = new Shapes * [numShapes];
   s[0] = new Triangle(p1, p2, p3, c);
-  s[1] = new Rectangle(vec3(p2.x,p2.y,p3.z-Z) ,p2, vec3(p3.x,p3.y,p3.z-Z),p3,c);
+  s[1] = new Rectangle(vec3(p2.x,p2.y,p2.z-Z) ,p2, vec3(p3.x,p3.y,p3.z-Z),p3,c);
   s[2] = new Triangle(vec3(p1.x,p1.y,p1.z-Z), vec3(p2.x,p2.y,p2.z-Z), vec3(p3.x,p3.y,p3.z-Z),c);
-  s[3] = new Rectangle(vec3(p2.x,p2.y,p2.z-Z),p2,p1, vec3(p1.x,p1.y,p1.z-Z),c);
-  s[4] = new Rectangle(p1,p3, vec3(p3.x,p3.y,p3.z-Z), vec3(p1.x,p1.y,p1.z-Z),c);
+  //s[3] = new Rectangle(vec3(p2.x,p2.y,p2.z-Z),p2,p1, vec3(p1.x,p1.y,p1.z-Z),c);
+  s[3] = new Rectangle(vec3(p1.x,p1.y,p1.z-Z),p1,vec3(p2.x,p2.y,p2.z-Z), p2,c);
+  s[4] = new Rectangle(p3,vec3(p3.x,p3.y,p3.z-Z), p1, vec3(p1.x,p1.y,p1.z-Z),c);
 
+}
+
+Cylinder::Cylinder(glm::vec3 center, double height, double radius, int numSegments, glm::vec3 color) {
+    numShapes = numSegments * 2 + numSegments * 2; // Two triangles per segment for sides and top/bottom
+    s = new Shapes * [numShapes];
+
+    glm::vec3 topCenter = center + glm::vec3(0, height / 2, 0);
+    glm::vec3 bottomCenter = center - glm::vec3(0, height / 2, 0);
+
+    double angleStep = 2 * M_PI / numSegments;
+
+    for (int i = 0; i < numSegments; ++i) {
+        double angle1 = i * angleStep;
+        double angle2 = (i + 1) * angleStep;
+
+        glm::vec3 topPoint1 = topCenter + glm::vec3(radius * cos(angle1), 0, radius * sin(angle1));
+        glm::vec3 topPoint2 = topCenter + glm::vec3(radius * cos(angle2), 0, radius * sin(angle2));
+        glm::vec3 bottomPoint1 = bottomCenter + glm::vec3(radius * cos(angle1), 0, radius * sin(angle1));
+        glm::vec3 bottomPoint2 = bottomCenter + glm::vec3(radius * cos(angle2), 0, radius * sin(angle2));
+
+        // Side rectangles (two triangles per segment)
+        s[i * 2] = new Triangle(topPoint1, bottomPoint1, topPoint2, color);
+        s[i * 2 + 1] = new Triangle(topPoint2, bottomPoint1, bottomPoint2, color);
+
+        // Top circle
+        s[numSegments * 2 + i] = new Triangle(topCenter, topPoint1, topPoint2, color);
+
+        // Bottom circle
+        s[numSegments * 3 + i] = new Triangle(bottomCenter, bottomPoint2, bottomPoint1, color);
+    }
 }
 
 /*vec3 Shapes::subtractZ(vec3 point, double z) {

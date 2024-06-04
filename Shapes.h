@@ -1,5 +1,5 @@
 
-
+#include <vector>
 #include "GL/glew.h"
 #include "GLFW/glfw3.h"
 #include <glm/glm.hpp>
@@ -58,6 +58,11 @@ struct rectPrism:public Shapes{
 };*/
 struct floorPlan : public Shapes {
     floorPlan();
+};
+
+struct Cylinder : public Shapes{
+  public:
+    Cylinder(glm::vec3 center, double height, double radius, int numSegments, glm::vec3 color);
 };
 
 mat4 perspective(float fov, float aspect, float near, float far);

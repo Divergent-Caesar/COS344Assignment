@@ -151,9 +151,9 @@ int main()
         float angle = currentTime * speed; // Calculate the angle based on time
         float camX = orbitCenter.x + radius * cos(angle);
         float camZ = orbitCenter.z + radius * sin(angle);
-        vec3 cameraPosition = vec3(camX, 40.0f, camZ);
+        vec3 cameraPosition = vec3(camX, 30.0f, camZ);
 
-        mat4 ProjectionMatrix = perspective(radians(90.0f), 1920.0f / 1080.0f, 0.1f, 100.0f);
+        mat4 ProjectionMatrix = perspective(radians(90.0f), 1920.0f / 1080.0f, 0.1f, 300.0f);
         mat4 ViewMatrix = lookAt(cameraPosition, vec3(0, 0, 0), vec3(0, 1, 0));
         mat4 ModelMatrix = mat4(1.0);
         mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
