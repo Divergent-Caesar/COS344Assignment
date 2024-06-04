@@ -115,6 +115,17 @@ int main()
     vec3 orbitCenter(0.0f, 0.0f, 0.0f);
 
     double lastTime = glfwGetTime();
+
+    float camX = 30.0f;
+    float camY = 30.0f;
+    float camZ = 30.0f;
+    vec3 cameraPosition = vec3(camX, camY, camZ);
+    mat4 ViewMatrix = lookAt(cameraPosition, vec3(0, 0, 0), vec3(0, 1, 0));
+    vec3 forward = normalize(vec3(ViewMatrix * vec4(0,0,-1,0)));
+    vec3 right = normalize(cross(vec3(0, 1, 0), forward));
+    float movementSpeed = 10;
+    float camPitch = 30.0f;
+    float camYaw = 30.0f;
     do
     {
         float currentTime = glfwGetTime();
@@ -148,10 +159,7 @@ int main()
         glBindBuffer(GL_ARRAY_BUFFER, normalbuffer);
         glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (void *)0);
 
-        float angle = currentTime * speed; // Calculate the angle based on time
-        float camX = orbitCenter.x + radius * cos(angle);
-        float camZ = orbitCenter.z + radius * sin(angle);
-        vec3 cameraPosition = vec3(camX, 30.0f, camZ);
+        ViewMatrix = lookAt(cameraPosition, cameraPosition + forward, vec3(0, 1, 0));
 
         mat4 ProjectionMatrix = perspective(radians(90.0f), 1920.0f / 1080.0f, 0.1f, 300.0f);
         mat4 ViewMatrix = lookAt(cameraPosition, vec3(0, 0, 0), vec3(0, 1, 0));
@@ -173,6 +181,53 @@ int main()
         glUniform3fv(ambientLightID, 1, &ambientLight[0]);
 
         //glDrawArrays(GL_TRIANGLES, 0, r->getNumVertices());
+        forward = vec3(ViewMatrix[0][2], ViewMatrix[1][2], ViewMatrix[2][2]);
+        forward = normalize(forward);
+        right = normalize(cross(vec3(0, 1, 0), forward));
+
+        if(glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+        {
+            cameraPosition -= forward * movementSpeed * deltaTime;
+        }
+        if(glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+        {
+            cameraPosition += forward * movementSpeed * deltaTime;
+        }
+        if(glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+        {
+            cameraPosition -= right * movementSpeed * deltaTime;
+        }
+        if(glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+        {
+            cameraPosition += right * movementSpeed * deltaTime;
+        }
+        if(glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+        {
+            cameraPosition += vec3(0,0.1,0);
+        }
+        if(glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
+        {
+            cameraPosition -= vec3(0,0.1,0);
+        }
+
+        // Rotate the camera up or down
+        float pitchSpeed = 1.0f; // Adjust this value for the rotation speed
+        if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
+            camPitch += pitchSpeed * deltaTime; // Increase pitch angle for looking up
+        }
+        if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
+            camPitch -= pitchSpeed * deltaTime; // Decrease pitch angle for looking down
+        }
+
+        // Calculate new forward vector based on updated pitch angle
+        vec3 forward;
+        forward.x = cos(camYaw) * cos(camPitch);
+        forward.y = sin(camPitch);
+        forward.z = sin(camYaw) * cos(camPitch);
+        forward = normalize(forward);
+
+        // Update ViewMatrix with the new viewing angles
+        ViewMatrix = lookAt(cameraPosition, cameraPosition + forward, vec3(0, 1, 0));
 
         bool pressed = false;
         cout<<p->getNumPoints()<<endl;
