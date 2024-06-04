@@ -218,7 +218,7 @@ Rectangle::Rectangle(vec3 p11, vec3 p12, vec3 p13, vec3 p21, vec3 color) {
 floorPlan::floorPlan() {
     //712 shapes total at the moment
 
-    numShapes = 96 ;
+    numShapes = 102 ;
     s = new Shapes * [numShapes];
     // s[0] = new Triangle(vec3(0,0.4,0),vec3(-0.2,0.2,0),vec3(0.2,0.2,0), vec3(0,0,0));
 
@@ -234,19 +234,20 @@ floorPlan::floorPlan() {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //walls x 4 (1r + 1r + (1r + 2t) + (1r + 2t) = shapes)
-    //  s[8] = new rectPrism(vec3(0,0.138,0.331), 0.822, 0.822, 0.034, vec3(1,1,1)); //east wall with elevator shaft
-    // s[2] = new rectPrism(vec3(0,0.138,-0.331), 0.822, 0.822, 0.034, vec3(1,1,1)); //west wall
+    s[97] = new rectPrism(vec3(0,0.1,0.331), 0.622, 0.822, 0.034, vec3(1,1,1)); //east wall with elevator shaft
+    s[98] = new rectPrism(vec3(0,0.1,-0.331), 0.622, 0.822, 0.034, vec3(1,1,1)); //west wall
 
-    // s[3] = new rectPrism(vec3(0.141,0.136,0), 0.822, 0.034, 1.96, vec3(1,1,1)); //north wall 
+    s[99] = new rectPrism(vec3(0.141,0.1,0), 0.622, 0.034, 1.96, vec3(1,1,1)); //north wall 
     // s[4] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
     // s[5] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
-    // s[4] =  new rectPrism(vec3(-0.141,0.136,0), 0.822, 0.034, 1.96, vec3(1,1,1)); //south wall with cutouts
+    s[100] =  new rectPrism(vec3(-0.141,0.1,0), 0.622, 0.034, 1.96, vec3(1,1,1)); //south wall with cutouts
 //     s[7] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 //     s[8] = new triPrism(vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), vec3(0,0,0), 0.0);
 
     // s[95] = new triPrism(vec3(0.141,0.136,0), vec3(0.7,0,0.922), vec3(0.6,0.1,-0.722), vec3(0,1,0), 0.822);
-    s[95] = new triPrism(vec3(0.02,0.08,-0.02), vec3(-0.02,0.08,-0.02), vec3(0,0.14,-0.02), vec3(0,1,0), 0.02);
+    s[95] = new triPrism(vec3(0.07,0.06,-0.04), vec3(0.03,0.06,-0.04), vec3(0.05,0.11,-0.04), vec3(0,1,0), 0.02);
+    s[96] = new triPrism(vec3(-0.07,0.06,-0.04), vec3(-0.03,0.06,-0.04), vec3(-0.05,0.11,-0.04), vec3(0,1,0), 0.02);
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //small wall x 6 (1 shape each)
@@ -261,7 +262,7 @@ floorPlan::floorPlan() {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //     //elevator shaft (1 shape)
-    // s[7] = new rectPrism(vec3(0,0.138,0.313), 0.822, 0.618, 0.077, vec3(0.5,0.5,0.5));
+    s[101] = new rectPrism(vec3(0,0.1,0.313), 0.622, 0.618, 0.077, vec3(0.5,0.5,0.5));
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //2. cutouts x 6 (11 shapes each)
