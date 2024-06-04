@@ -79,6 +79,8 @@ int main()
     glClearColor(1.0f, 0.85f, 0.7f, 1);
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
+    //glEnable(GL_CULL_FACE);
+    //glCullFace(GL_BACK);
 
     GLuint VertexArrayID;
     glGenVertexArrays(1, &VertexArrayID);
@@ -102,9 +104,9 @@ int main()
 
     floorPlan *p = new floorPlan();
     float lightIntensity = 8.0f;
-    vec3 lightPosition = vec3(1.0f, 1.0f, 1.0f);
+    vec3 lightPosition = vec3(80.0f, 80.0f, 80.0f);
     vec3 lightColor = vec3(1.0f, 1.0f, 1.0f);
-    vec3 ambientLight = vec3(0.2f, 0.2f, 0.2f);
+    vec3 ambientLight = vec3(0.1f, 0.1f, 0.1f);
 
     GLuint lightPositionID = glGetUniformLocation(ID, "lightPosition_worldspace");
     GLuint lightColorID = glGetUniformLocation(ID, "lightColor");
@@ -126,6 +128,8 @@ int main()
     float movementSpeed = 10;
     float camPitch = 30.0f;
     float camYaw = 30.0f;
+    mat4 ProjectionMatrix = perspective(radians(90.0f), 1920.0f / 1080.0f, 0.1f, 100.0f);
+    mat4 ModelMatrix = mat4(1.0);
     do
     {
         float currentTime = glfwGetTime();
@@ -159,11 +163,12 @@ int main()
         glBindBuffer(GL_ARRAY_BUFFER, normalbuffer);
         glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (void *)0);
 
+        ModelMatrix = mat4(1.0);
         ViewMatrix = lookAt(cameraPosition, cameraPosition + forward, vec3(0, 1, 0));
-
-        mat4 ProjectionMatrix = perspective(radians(90.0f), 1920.0f / 1080.0f, 0.1f, 300.0f);
-        mat4 ViewMatrix = lookAt(cameraPosition, vec3(0, 0, 0), vec3(0, 1, 0));
-        mat4 ModelMatrix = mat4(1.0);
+        ProjectionMatrix = perspective(radians(90.0f), 1920.0f / 1080.0f, 0.1f, 100.0f);
+        
+        mat4 ViewMatrix = lookAt(cameraPosition, vec3(0, 0, 0), vec3(0, 1.0, 0));
+        
         mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
 
         GLuint MatrixID = glGetUniformLocation(ID, "MVP");
@@ -172,7 +177,7 @@ int main()
 
         glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
         glUniformMatrix4fv(ViewMatrixID, 1, GL_FALSE, &ViewMatrix[0][0]);
-        glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &ModelMatrix[0][0]);
+        glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &ProjectionMatrix[0][0]);
 
         vec3 intenseLightColor = lightColor * lightIntensity;
 
@@ -211,7 +216,7 @@ int main()
         }
 
         // Rotate the camera up or down
-        float pitchSpeed = 1.0f; // Adjust this value for the rotation speed
+        float pitchSpeed = 100.0f; // Adjust this value for the rotation speed
         if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
             camPitch += pitchSpeed * deltaTime; // Increase pitch angle for looking up
         }

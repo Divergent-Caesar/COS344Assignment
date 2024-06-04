@@ -21,7 +21,7 @@ void main() {
     fragmentColor = vertexColor;
 
     vec4 vertexPosition_cameraspace = V * M * vec4(vertexPosition_modelspace, 1.0);
-    Position_cameraspace = vec3(vertexPosition_cameraspace) / vertexPosition_cameraspace.w;
+    Position_cameraspace = vertexPosition_cameraspace.xyz / vertexPosition_cameraspace.w;
 
     vec3 vertexNormal_cameraspace = (V * M * vec4(vertexNormal_modelspace, 0.0)).xyz;
     Normal_cameraspace = normalize(vertexNormal_cameraspace);
